@@ -9,7 +9,7 @@
 
 <body>
 	<section class="signStyle">
-	<form action="signup.php" method="post" style="border:1px solid #ccc">
+	<form action="profile-insert.php" method="post" style="border:1px solid #ccc">
 		<div class="container">
 			<h1>Create an Account</h1>
 
@@ -17,37 +17,38 @@
 				<div class="col-md-4">
 					<div class="form-group">	
 						<label for="firstName"><b>First Name</b></label>
-						<input type="text" placeholder="Enter First Name" name="firstName" maxlength="32" required="1">
+						<input type="text" placeholder="Enter First Name" name="firstName" maxlength="100" required="1">
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label for="middleName"><b>Middle Name</b></label>
-						<input type="text" placeholder="Enter Middle Name" name="middleName" maxlength="32" required="1">
+						<input type="text" placeholder="Enter Middle Name" name="middleName" maxlength="100">
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label for="lastName"><b>Last Name</b></label>
-						<input type="text" placeholder="Enter Last Name" name="lastName" maxlength="32" required="1">
+						<input type="text" placeholder="Enter Last Name" name="lastName" maxlength="100" required="1">
 					</div>
 				</div>
 			</div>
 
 			<label for="username"><b>Username</b></label>
-			<input type="text" placeholder="Enter Username" name="username" maxlength="32" required="1">
+			<input type="text" placeholder="Enter Username" name="username" minlength="8" maxlength="12" required="1">
 
 			<label for="password"><b>Password</b></label>
-			<input type="text" placeholder="Enter Password" name="password" maxlength="32" required="1">
+			<input type="password" placeholder="Enter Password" name="password" minlength="8" maxlength="12" required="1">
 
 			<label for="passwordCheck"><b>Password</b></label>
-			<input type="text" placeholder="Repeat Password" name="passwordCheck" maxlength="32" required="1">
+			<input type="password" placeholder="Confirm Password" name="passwordCheck" minlength="8" maxlength="12" required="1">
 
 			<label for="email"><b>Email</b></label>
-			<input type="text" placeholder="Enter Email" name="email" maxlength="64" required="1">
+			<input type="email" placeholder="Enter Email" name="email" maxlength="100" required="1">
 
 			<label for="mobileNum"><b>Mobile Number</b></label>
-			<input type="number" placeholder="Enter Mobile Number" name="pmobileNum" maxlength="15">
+			<input type="text" placeholder="Enter Mobile Number" name="mobileNum" maxlength="12" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+			<span class="validity"></span>
 			<br>
 
 			<label for="birthdate"><b>Birthdate</b></label>

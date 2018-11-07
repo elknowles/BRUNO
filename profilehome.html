@@ -11,19 +11,22 @@
 <body>
 	<section class="hero">
 		<div class="hero-inner">
-			<h1>Welcome Back</h1>
+			<h1>PERSON NAME</h1>
 			<p><span id="datetime"></span></p>
 			<script>
 				var dt = new Date();
 				document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
 			</script>
+			<div id="outer">
+				<div class="inner"><button onclick="window.location.href='posts.html'" class="btn circ">Posts</button></div>
+				<div class="inner"><button onclick="window.location.href='messages.html'" class="btn circ">Messages</button></div>
+				<div class="inner"><button onclick="window.location.href='alerts.html'" class="btn circ">Alerts</button></div>
+				<div class="inner"><button onclick="window.location.href='settings.html'" class="btn circ">Settings</button></div>
+			</div>
 		</div>
 	</section>
 
-	<ul>
-		<li><a href="login.html">Log In</a></li>
-		<li style="float: right"><a href="signup.html">Create Account</a></li>
-	</ul>
+	
 
 </body>
 
