@@ -4,13 +4,19 @@
 <head>
 	<title>BRUNO</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/anonymous-pro" type="text/css"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 	<section class="hero">
 		<div class="hero-inner">
-			<h1 style="font-size:100px">Hello,</h1>
-			<h3>Welcome to Bruno</h3>
+			<h1>Welcome Back</h1>
+			<p><span id="datetime"></span></p>
+			<script>
+				var dt = new Date();
+				document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+			</script>
 		</div>
 	</section>
 
@@ -19,12 +25,6 @@
 		<li style="float: right"><a href="signup.html">Create Account</a></li>
 	</ul>
 
-	<!--<p><span id="datetime"></span></p>
-
-	<script>
-		var dt = new Date();
-		document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
-	</script>-->
 </body>
 
 </html>

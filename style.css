@@ -1,6 +1,9 @@
+/* ============================== H O M E   P A G E   S T Y L E ============================== */
+/* =========================================================================================== */
 body {
     margin: 0;
     font-family: sans-serif;
+    background-color: grey;
 }
 
 .hero {
@@ -28,13 +31,23 @@ body {
 
 .hero h1 {
     /* Text styles */
-    font-size: 5em;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Prata;
+    font-size: 100px;
     font-weight: 100;
     
     /* Margins */
     margin-top: 0;
     margin-bottom: 0.5em;
+}
+
+.hero h2 {
+    font-family: AnonymousProRegular;
+    font-size: 50px;
+}
+
+.hero p {
+    font-family: AnonymousProRegular;
+    font-size: 50px;
 }
 
 .hero .btn {
@@ -70,10 +83,12 @@ ul {
 }
 
 li {
+    font-family: AnonymousProRegular;
     float: left;
 }
 
 li a {
+    font-family: AnonymousProRegular;
     display: block;
     color: white;
     text-align: center;
@@ -86,12 +101,36 @@ li a: hover {
 }
 
 
-/* =============== S I G N U P   P A G E   S T Y L E =============== */
-/* ================================================================= */
+/* ============================== S I G N U P   P A G E   S T Y L E ============================== */
+/* =============================================================================================== */
 * {box-sizing: border-box}
 
 /* Full-width input fields */
-  input[type=text], input[type=password] {
+
+.signStyle {
+    /* Sizing */
+    width: 100vw;
+    height: 100vh;
+    
+    /* Flexbox stuff */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Text styles */
+    text-align: center;
+    color: white;
+    
+    /* Background styles */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('alpine-mountain.jpg');
+    /* Photographer Michelle Hironimus, https://www.pexels.com/photo/blue-sky-frond-palm-palm-frond-928413/ */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+input[type=text], input[type=password] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -133,7 +172,7 @@ button:hover {
 }
 
 /* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
+.cancelbtn, .signupbtn, .submitbtn {
   float: left;
   width: 50%;
 }
@@ -152,7 +191,15 @@ button:hover {
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
+  .cancelbtn, .signupbtn, .submitbtns {
     width: 100%;
   }
 }
+
+/* ============================== L O G I N   P A G E   S T Y L E ============================== */
+/* ============================================================================================= */
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}        
