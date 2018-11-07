@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>LOG IN</title>
+	<link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<section class="signStyle">
+		<form>
+
+			<div class="container">
+				<label for="username"><b>Username</b></label>
+				<input type="text" placeholder="Enter Username" name="username" required="1">
+
+				<label for="password"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="password" required="1">
+			
+				<label>
+					<input type="checkbox" checked="checked" name="remember"> Remember me
+				</label>
+			</div>
+
+			<div class="clearfix">
+	      		<button onclick="window.location.href='index.html'" id="loginCancel" type="button" class="cancelbtn">Cancel</button>
+	     		<button id="loginSubmit" type="submit" class="submitbtn">Login</button>
+	     		<span class="password">Forgot <a href="forgotpassword.html" style="color: white">password?</a></span>
+	     	</div>
+
+		</form>
+	</section>
+</body>
+
+</html>
