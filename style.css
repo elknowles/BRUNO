@@ -3,7 +3,9 @@
 body {
     margin: 0;
     font-family: sans-serif;
-    background-color: grey;
+    background-color: #8c8c8c;
+    color: black;
+    overflow-x: hidden;
 }
 
 .hero {
@@ -146,7 +148,7 @@ li {
 li a {
     font-family: AnonymousProRegular;
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -187,6 +189,7 @@ li a: hover {
 }
 
 input[type=text], input[type=password] {
+  color: black;
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
