@@ -26,7 +26,7 @@ if ($BrunoCONN->connect_error) {
   $Image = '';
 
 
-  //Create query to generate new profile
+  //Create query to generate new page
   $PageInsert = "INSERT INTO Page(PageID,Name,Description,Category,Image)
   VALUES('$PageID','$Name','$Description','$Category','$Image')";
 
