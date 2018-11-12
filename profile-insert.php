@@ -6,7 +6,7 @@ session_start();
 <?php
 require_once "bruno-config.php";
 
-function generatePrID() {
+function generatePrID($mode) {
   $idfile = new DOMDocument();
   $idfile->load('id.xml');
   if ($idfile === FALSE) {
@@ -15,7 +15,12 @@ function generatePrID() {
   }
   $idroot = $idfile->documentElement;
   $ID = $idroot->getElementsByTagName('profileid')->item(0)->textContent;
-  ++$ID;
+  if($mode === 0){
+    ++$ID;
+  }
+  else{
+    --$ID;
+  }
   $idroot->getElementsByTagName('profileid')->item(0)->textContent = $ID;
   $idfile->save('id.xml');
   return $ID;
@@ -23,7 +28,7 @@ function generatePrID() {
 
 
 //Storing data from the form into variables
-$ProfileID = generatePrID();
+$ProfileID = generatePrID(0);
 $Fname = $_POST["firstName"];
 $Mname = $_POST["middleName"];
 $Lname = $_POST["lastName"];
@@ -49,6 +54,8 @@ if($BrunoCONN->query($ProfileInsert) === TRUE){
 else {
   $prerror = "Error: ".$ProfileInsert. "<br>" . $BrunoCONN->error;
   $_SESSION['Error'] = $prerror;
+  //Revert primary key value ;
+  generatePrID(-1);
   header("Location: http://localhost/BRUNO/error.php");
   $BrunoCONN->close();
 }
