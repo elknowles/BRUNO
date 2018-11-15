@@ -1,7 +1,12 @@
+<?php
+session_start();
+?>
 <html>
 <body>
 <?php
-function generatePrID() {
+require_once "bruno-config.php";
+
+function generatePrID($mode) {
   $idfile = new DOMDocument();
   $idfile->load('id.xml');
   if ($idfile === FALSE) {
@@ -10,21 +15,20 @@ function generatePrID() {
   }
   $idroot = $idfile->documentElement;
   $ID = $idroot->getElementsByTagName('profileid')->item(0)->textContent;
-  ++$ID;
+  if($mode === 0){
+    ++$ID;
+  }
+  else{
+    --$ID;
+  }
   $idroot->getElementsByTagName('profileid')->item(0)->textContent = $ID;
   $idfile->save('id.xml');
   return $ID;
 }
 
-//Create connection with the database
-$BrunoCONN = new mysqli("localhost", "root", "root", "Bruno");
-
-if ($BrunoCONN->connect_error) {
-    die("Connection failed: " . $BrunoCONN->connect_error);
-}
 
 //Storing data from the form into variables
-$ProfileID = generatePrID();
+$ProfileID = generatePrID(0);
 $Fname = $_POST["firstName"];
 $Mname = $_POST["middleName"];
 $Lname = $_POST["lastName"];
@@ -43,14 +47,19 @@ VALUES('$ProfileID','$Fname','$Mname','$Lname','$UsrName','$Pass','$Email','$Mob
 //Execute generated query
 if($BrunoCONN->query($ProfileInsert) === TRUE){
   echo "New profile generated in database";
+  $_SESSION['Username'] = $UsrName;
+  header("Location: http://localhost/BRUNO/profilehome.html");
+  $BrunoCONN->close();
 }
 else {
-  echo "Error: ".$ProfileInsert. "<br>" . $BrunoCONN->error;
+  $prerror = "Error: ".$ProfileInsert. "<br>" . $BrunoCONN->error;
+  $_SESSION['Error'] = $prerror;
+  //Revert primary key value ;
+  generatePrID(-1);
+  header("Location: http://localhost/BRUNO/error.php");
+  $BrunoCONN->close();
 }
 //Close connection with database
-$BrunoCONN->close();
-
-header("Location: http://localhost/BRUNO/profilehome.html");
 ?>
 
 </body>

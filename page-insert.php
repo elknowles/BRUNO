@@ -1,8 +1,12 @@
+<?php
+session_start();
+?>
 <html>
 <body>
 <?php
+require_once 'bruno-config.php';
 
-function generatePaID() {
+function generatePaID($mode) {
   $idfile = new DOMDocument();
   $idfile->load('id.xml');
   if ($idfile === FALSE) {
@@ -11,19 +15,19 @@ function generatePaID() {
   }
   $idroot = $idfile->documentElement;
   $ID = $idroot->getElementsByTagName('pageid')->item(0)->textContent;
-  ++$ID;
+  if($mode === 0){
+    ++$ID;
+  }
+  else{
+    --$ID;
+  }
   $idroot->getElementsByTagName('pageid')->item(0)->textContent = $ID;
   $idfile->save('id.xml');
   return $ID;
 }
-
-$BrunoCONN = new mysqli("localhost", "root", "root", "Bruno");
-
-if ($BrunoCONN->connect_error) {
-    die("Connection failed: " . $BrunoCONN->connect_error);
-}
   //Storing data from the form into variables
-  $PageID = generatePaID();
+  $PageID = generatePaID(0);
+  $UsrName = $_SESSION['Username'];
   $Name = $_POST['pageName'];
   $Description = $_POST['description'];
   $Category = $_POST['category'];
@@ -36,20 +40,35 @@ if ($BrunoCONN->connect_error) {
   }*/
   $Image = 'alpineMountain.png';
 
+  $GetUserID = "SELECT ProfileID FROM Profile WHERE Username ='$UsrName'";
+
+  // if($UsrID = $BrunoCONN->query($GetUserID)){
+  //   echo "Selected user found";
+  // }
+  // else{
+  //   echo "User not found in database";
+  //   header("Location: http://localhost/BRUNO/index.html");
+  //   die();
+  // }
 
   //Create query to generate new page
   $PageInsert = "INSERT INTO Page(PageID,Name,Description,Category,Image,CreatorID)
-  VALUES('$PageID','$Name','$Description','$Category','$Image',NULL)";
+  VALUES('$PageID','$Name','$Description','$Category','$Image',(SELECT ProfileID FROM Profile WHERE Username ='$UsrName'))";
 
   //Execute generated query
   if($BrunoCONN->query($PageInsert) === TRUE){
     echo "New page generated in database";
+    $BrunoCONN->close();
   }
   else {
-    echo "Error: ".$PageInsert. "<br>" . $BrunoCONN->error;
+    $paerror = "Error: ".$PageInsert. "<br>" . $BrunoCONN->error;
+    $_SESSION['Error'] = $paerror;
+    generatePaID(-1);
+    header("Location: http://localhost/BRUNO/error.php");
+    $BrunoCONN->close();
   }
   //Close connection with database
-  $BrunoCONN->close();
+
   ?>
 
   </body>

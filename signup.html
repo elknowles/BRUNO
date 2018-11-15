@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>CREATE AN ACCOUNT</title>
+	<title>CREATE ACCOUNT</title>
 	<link rel="stylesheet" href="style.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,77 +13,77 @@
 
 <body>
 	<section class="signStyle">
-	<form action="profile-insert.php" method="post" style="border:1px solid #ccc">
-		<div class="container-fluid">
-			<h1>Create Account</h1>
+		<form action="profile-insert.php" method="post" style="border:1px solid #ccc">
+			<div class="container-fluid">
+				<h1>Create Account</h1>
 
-			<div class="row">
-				<div class="col-md-4">
-					<label for="firstName"><b>First Name</b></label>
-					<input type="text" placeholder="Enter First Name" name="firstName" maxlength="100" required="1">
+				<div class="row">
+					<div class="col-md-4">
+						<label for="firstName"><b>First Name</b></label>
+						<input type="text" placeholder="Enter First Name" name="firstName" maxlength="100" required="1">
+					</div>
+					<div class="col-md-4">
+							<label for="middleName"><b>Middle Name</b></label>
+							<input type="text" placeholder="Enter Middle Name" name="middleName" maxlength="100">
+					</div>
+					<div class="col-md-4">
+							<label for="lastName"><b>Last Name</b></label>
+							<input type="text" placeholder="Enter Last Name" name="lastName" maxlength="100" required="1">
+					</div>
 				</div>
-				<div class="col-md-4">
-						<label for="middleName"><b>Middle Name</b></label>
-						<input type="text" placeholder="Enter Middle Name" name="middleName" maxlength="100">
-				</div>
-				<div class="col-md-4">
-						<label for="lastName"><b>Last Name</b></label>
-						<input type="text" placeholder="Enter Last Name" name="lastName" maxlength="100" required="1">
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-6">
-					<label for="username"><b>Username</b></label>
-					<input type="text" placeholder="Enter Username" name="username" minlength="8" maxlength="12" required="1">
+				<div class="row">
+					<div class="col-md-6">
+						<label for="username"><b>Username</b></label>
+						<input type="text" placeholder="Enter Username" name="username" minlength="8" maxlength="12" required="1">
+					</div>
+					<div class="col-md-6">
+						<label for="birthdate"><b>Birthdate</b></label>
+						<input type="text" name="birthdate" required="1" required pattern="[0-1][0-9]\/[0-3][0-9]\/[0-9]{4}">
+					</div>
 				</div>
-				<div class="col-md-6">
-					<label for="birthdate"><b>Birthdate</b></label>
-					<input type="text" name="birthdate" required="1" required pattern="[0-1][0-9]\/[0-3][0-9]\/[0-9]{4}">
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-6">
-					<label for="password"><b>Password</b></label>
-					<input type="password" placeholder="Enter Password" name="password" minlength="8" maxlength="12" required="1">
+				<div class="row">
+					<div class="col-md-6">
+						<label for="password"><b>Password</b></label>
+						<input type="password" placeholder="Enter Password" name="password" minlength="8" maxlength="12" required="1">
+					</div>
+					<div class="col-md-6">
+						<label for="passwordCheck"><b>Password</b></label>
+						<input type="password" placeholder="Confirm Password" name="passwordCheck" minlength="8" maxlength="12" required="1">
+					</div>
 				</div>
-				<div class="col-md-6">
-					<label for="passwordCheck"><b>Password</b></label>
-					<input type="password" placeholder="Confirm Password" name="passwordCheck" minlength="8" maxlength="12" required="1">
+
+				<div class="row">
+					<div class="col-md-6">
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Enter Email" name="email" maxlength="100" required="1" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+						<span class="validity"></span>
+					</div>
+					<div class="col-md-6">
+						<label for="mobileNum"><b>Mobile Number</b></label>
+						<input type="text" placeholder="Enter Mobile Number" name="mobileNum" maxlength="12" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+						<span class="validity"></span>
+					</div>
 				</div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-6">
-					<label for="email"><b>Email</b></label>
-					<input type="text" placeholder="Enter Email" name="email" maxlength="100" required="1" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
-					<span class="validity"></span>
-				</div>
-				<div class="col-md-6">
-					<label for="mobileNum"><b>Mobile Number</b></label>
-					<input type="text" placeholder="Enter Mobile Number" name="mobileNum" maxlength="12" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-					<span class="validity"></span>
-				</div>
-			</div>
+				<label for="privacy"><b>Privacy Settings</b></label>
+				<input type="radio" name="privacy" value="1" checked>Public<br>
+				<input type="radio" name="privacy" value="0">Private<br>
 
-			<label for="privacy"><b>Privacy Settings</b></label>
-			<input type="radio" name="privacy" value="public" checked>Public<br>
-			<input type="radio" name="privacy" value="private">Private<br>
+			 	<label>
+			      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+			    </label>
 
-		 	<label>
-		      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-		    </label>
-
-			<p>By creating an account you agree to our <a href="terms&conditions.html" style="color:dodgerblue">Terms & Conditions</a>.</p>		    
-			
-			<div class="clearfix">
-      			<button onclick="window.location.href='index.html'" id="signUpCancel" type="button" class="cancelbtn">Cancel</button>
-     		 	<button type="submit" class="signupbtn">Sign Up</button>
-     		</div>
-     	</div>
-	</form>
-</section>
+				<p>By creating an account you agree to our <a href="terms&conditions.html" style="color:dodgerblue">Terms & Conditions</a>.</p>		    
+				
+				<div class="clearfix">
+	      			<button onclick="window.location.href='index.html'" id="signUpCancel" type="button" class="cancelbtn">Cancel</button>
+	     		 	<button type="submit" class="signupbtn">Sign Up</button>
+	     		</div>
+	     	</div>
+		</form>
+	</section>
 </body>
 
 </html>
