@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +15,7 @@
 <body>
 	<section class="hero">
 		<div class="hero-inner">
-			<h1>PERSON NAME</h1>
+			<h1><?php echo $_SESSION['Username'] ?></h1>
 			<p><span id="datetime"></span></p>
 			<script>
 				var dt = new Date();
@@ -39,7 +43,7 @@
 		<p>It does still need a lighter color compliment</p>
 	</section>
 
-	
+
 
 </body>
 
