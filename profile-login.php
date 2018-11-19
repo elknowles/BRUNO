@@ -43,7 +43,7 @@ if($GetUserInfo = $BrunoCONN->prepare($UserInfoSQL)){
         $_SESSION['Error'] =$lgerror;
       }
     }else{
-      $lgerror = 'Generic unhelpful error message';
+      $lgerror = 'Generic unhelpful error message JK, Query failed';
       $_SESSION['Error'] =$lgerror;
     }
   }

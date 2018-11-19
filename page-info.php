@@ -6,7 +6,7 @@ session_start()
 <?php
 require_once 'bruno-config.php';
 
-$pageID = $_SESSION['PageID'];
+$pageID = $_SESSION['ActivePageID'];
 
 $PageInfoSQL = "SELECT * FROM PAGE WHERE PageID = ?";
 //Prepare query statement
@@ -26,7 +26,7 @@ if($GetPageInfo =$BrunoCONN->prepare($PageInfoSQL)){
   }
 }
 
-$PagePostsSQL = "SELECT * FROM POST WHERE PageID =?"
+$PagePostsSQL = "SELECT * FROM POST WHERE PageID =?";
 if($GetPosts =$BrunoCONN->prepare($PagePostsSQL)){
   $GetPosts->bind_param("s",$ParamPgID);
   $ParamPgID = $pageID;
@@ -35,6 +35,6 @@ if($GetPosts =$BrunoCONN->prepare($PagePostsSQL)){
       if($GetPosts->num_rows ==1){
         $GetPageInfo->bind_result($poID,$prID,$paID);
       }
-    
+
   }
 }
