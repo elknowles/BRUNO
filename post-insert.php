@@ -29,11 +29,12 @@ function generatePoID($mode) {
   //Storing data from the form into variables
   $posttype = 'TEXT';             //$_POST['selection'];
   //$poster = $_POST['active'];
-  $Content =  'Our second post';                  //$_POST['content'];
-  $Caption = 'Our first caption';                 //$_POST['caption'];
+  $Content =  'This is a cool post';                  //$_POST['content'];
+  $Caption = 'captionMAN';                 //$_POST['caption'];
 
   $Username = $_SESSION['Username'];
   $PostID = generatePoID(0);
+  $CreationDate= date('Y-m-d H:i:s');
 
   $ProfileIDSQL = "SELECT ProfileID FROM Profile WHERE Username =?";
   if($GetProfileID = $BrunoCONN->prepare($ProfileIDSQL)){
@@ -88,8 +89,8 @@ function generatePoID($mode) {
   }
   $GetPageID->close();
 
-  $PostInsertProfile =" INSERT INTO Post(PostID, ProfileID, PageID)
-  VALUES('$PostID','$PrID', NULL)";
+  $PostInsertProfile =" INSERT INTO Post(PostID, ProfileID, PageID, CreationDate)
+  VALUES('$PostID','$PrID', NULL,'$CreationDate')";
   //
   $TextInsert =" INSERT INTO Text(PostID, TContent)
   VALUES('$PostID','$Content')";
@@ -103,8 +104,8 @@ function generatePoID($mode) {
   $VideoInsert =" INSERT INTO Video(PostID, VContent,VCaption)
   VALUES('$PostID','$Content','$Caption')";
 
-  $PostInsertPage =" INSERT INTO Post(PostID, ProfileID, PageID)
-  VALUES('$PostID','$PrID', '$PaID')";
+  $PostInsertPage =" INSERT INTO Post(PostID, ProfileID, PageID, CreationDate)
+  VALUES('$PostID','$PrID', '$PaID','$CreationDate')";
 
   // if($BrunoCONN->query($PostInsertProfile) === TRUE){
   //   if($posttype === 'TEXT'){
@@ -177,7 +178,7 @@ function generatePoID($mode) {
 
     }
   }else{
-      $poerror = "Error: ".$PostInsertPage. "<br>". $BrunoCONN->error."???";
+      $poerror = "Error: ".$PostInsertPage. "<br>". $BrunoCONN->error;
       $_SESSION['Error'] = $poerror;
       header("Location: http://localhost/BRUNO/error.php");
       $BrunoCONN->close();

@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 
 
 require_once "bruno-config.php";
@@ -36,6 +36,7 @@ if($GetUserInfo = $BrunoCONN->prepare($UserInfoSQL)){
           } else{
             $lgerror = "Incorrect password entered";
             $_SESSION['Error'] =$lgerror;
+            header("Location: http://localhost/BRUNO/error.php");
           }
         }
       }else {
