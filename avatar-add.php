@@ -9,6 +9,7 @@ require_once 'bruno-config.php';
 $TargetDir ="Images/Avatars/";
 $AvatarFile = basename($_FILES["file"]["name"]);
 $TargetFilePath = $TargetDir . $AvatarFile;
+$Username = $_SESSION['Username'];
 
 $ProfileIDSQL = "SELECT ProfileID FROM Profile WHERE Username =?";
 if($GetProfileID = $BrunoCONN->prepare($ProfileIDSQL)){
@@ -34,7 +35,6 @@ if($GetProfileID = $BrunoCONN->prepare($ProfileIDSQL)){
 }
 $GetProfileID->close();
 
-if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
   if(move_uploaded_file($_FILES["file"]["tmp_name"], $TargetFilePath)){
     $AddAvatarSQL = "UPDATE Profile SET Avatar =? WHERE ProfileID=?";
     if($AddAvatar = $BrunoCONN->prepare($AddAvatarSQL)){
@@ -43,16 +43,20 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
       $ParamFile =$AvatarFile;
       if($AddAvatar->execute()){
         //Execute query
+        $_SESSION['ActiveAvatar'] = $TargetFilePath;
         header("Location: http://localhost/BRUNO/profilehome.html");
+        $BrunoCONN->close();
       }
       else{
         //Query failed
         $averr = "Error: ".$PostInsertPage."<br>".$BrunoCONN->error;
         $_SESSION['Error'] =$averr;
+        header("Location: http://localhost/BRUNO/error.php");
+        $BrunoCONN->close();
       }
     }
   }
-}
+
 
 ?>
 

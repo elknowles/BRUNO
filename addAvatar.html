@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<?php
+session_start();
+?>
+<html>
+
+<head>
+  <title>AVATAR UPLOAD</title>
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/anonymous-pro" type="text/css"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  .btn {
+    width: 100px;
+    height: 100px;
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+  </style>
+<body>
+  <div id="Avatar">
+    <img src="<?php echo $_SESSION['ActiveAvatar']?>" alt="alpineMountain.jpg" onerror=this.src="profilePlaceholder.png" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
+			<form action="avatar-add.php" method="post" enctype="multipart/form-data">
+				<img id="photoUpload" style="position: fixed; top: 18%; left: 23%; width: 600px; height: 600px; border-radius: 50%">
+				<div class="upload-btn-wrapper" style="position: fixed; top: 21%; left: 26%;">
+					<button class="btn">Upload Photo</button>
+					<input type="file" name="file" accept="image/*" onchange="document.getElementById('photoUpload').src = window.URL.createObjectURL(this.files[0])">
+				</div>
+				<input type="submit" name="submit" value="Submit" style="position: fixed; bottom: 9%; right: 43%; width: 128px; height: 128px; border-radius: 50%;">
+			</form>
+    </div>
+  </body>

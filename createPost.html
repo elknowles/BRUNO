@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html>
 
 <head>
@@ -72,9 +75,9 @@
 		    border-bottom-right-radius: 100px;
 		    border-top-right-radius: 100px;
 		    border-left: 0;
-		    
+
 		    transform: rotate(45deg);
-		    
+
 		    -webkit-box-sizing: border-box;
 		    -moz-box-sizing: border-box;
 		    box-sizing: border-box;
@@ -87,9 +90,9 @@
 		    border-bottom-right-radius: 100px;
 		    border-top-right-radius: 100px;
 		    border-left: 0;
-		    
+
 		    transform: rotate(315deg);
-		    
+
 		    -webkit-box-sizing: border-box;
 		    -moz-box-sizing: border-box;
 		    box-sizing: border-box;
@@ -139,7 +142,7 @@
 	</div>
 
 	<div id="Text" class="tabcontent">
- 		<img src="profilePlaceholder.png" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
+ 		<img src="<?php echo $_SESSION['ActiveAvatar']?>" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
 			<form>
 
 				<input type="text" placeholder="Twenty yen for your thoughts..." name="TContent" style="font-size: 18px; font-family: AnonymousProRegular; position: fixed; top: 18%; left: 23%; width: 600px; height: 600px; border-radius: 50%;">
@@ -149,7 +152,7 @@
 	</div>
 
 	<div id="Photo" class="tabcontent">
- 		<img src="profilePlaceholder.png" alt="alpineMountain.jpg" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
+ 		<img src="<?php echo $_SESSION['ActiveAvatar']?>" alt="alpineMountain.jpg" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
 			<form>
 				<img id="photoUpload" style="position: fixed; top: 18%; left: 23%; width: 600px; height: 600px; border-radius: 50%">
 				<div class="upload-btn-wrapper" style="position: fixed; top: 21%; left: 26%;">
@@ -159,9 +162,9 @@
 				<input type="submit" value="Submit" style="position: fixed; bottom: 9%; right: 43%; width: 128px; height: 128px; border-radius: 50%;">
 			</form>
 	</div>
-     
+
 	<div id="Video" class="tabcontent">
- 		<img src="profilePlaceholder.png" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
+ 		<img src="<?php echo $_SESSION['ActiveAvatar']?>" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
 			<form>
 				<img id="videoUpload" style="position: fixed; top: 18%; left: 23%; width: 600px; height: 600px; border-radius: 50%">
 				<input type="file" accept="video/*" onchange="document.getElementById('videoUpload').src = window.URL.createObjectURL(this.files[0])">
@@ -170,7 +173,7 @@
 	</div>
 
 	<div id="Audio" class="tabcontent">
- 		<img src="profilePlaceholder.png" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
+ 		<img src="<?php echo $_SESSION['ActiveAvatar']?>" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
 			<form>
 				<img id="soundwave" style="position: fixed; top: 18%; left: 23%; width: 600px; height: 600px; border-radius: 50%">
 				<input type="file" accept="audio/*" onchange="document.getElementById('audioUpload').src = window.URL.createObjectURL(this.files[0])">
@@ -196,4 +199,4 @@
 	</script>
 
 </body>
-</html> 
+</html>
