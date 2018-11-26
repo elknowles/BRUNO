@@ -6,11 +6,12 @@ session_start();
 
 require_once "bruno-config.php";
 
-$AllPostsSQL = "SELECT COUNT(*) FROM Page as P JOIN Post as O ON P.PageID = O.PageID";
-<html>
-<body>
+$SelectionDate = $_POST['date'];
 
-</body>
-</html>
+$AllPostsSQL = "SELECT COUNT(*) FROM Page as P JOIN Post as O ON P.PageID = O.PageID WHERE CreationDate LIKE '$SelectionDate%'";
+
+$AllPostsInfoSQL = "SELECT * FROM Page as P JOIN Post as O ON P.PageID = O.PageID WHERE CreationDate LIKE '$SelectionDate%'";
+
+
 
 ?>

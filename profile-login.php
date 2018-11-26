@@ -8,7 +8,7 @@ $Username = $_POST['username'];
 $Password = $_POST['password'];
 //Get info from login form
 
-$UserInfoSQL = "SELECT Username,Password FROM Profile WHERE Username =?";
+$UserInfoSQL = "SELECT Username,Password,Avatar FROM Profile WHERE Username =?";
 //Prepare query statement
 if($GetUserInfo = $BrunoCONN->prepare($UserInfoSQL)){
   $GetUserInfo->bind_param("s",$ParamUsr);
@@ -21,7 +21,7 @@ if($GetUserInfo = $BrunoCONN->prepare($UserInfoSQL)){
       //Store result of query
       if($GetUserInfo->num_rows == 1){
         //See if username found in database
-        $GetUserInfo->bind_result($Username,$PasswordVer);
+        $GetUserInfo->bind_result($Username,$PasswordVer,$AvatarFile);
         //Designate variables to bind Username and Password values
         if($GetUserInfo->fetch()){
           //Get value of 'SELECTED' Username and Password
@@ -31,6 +31,9 @@ if($GetUserInfo = $BrunoCONN->prepare($UserInfoSQL)){
             //Start session with this user
             $_SESSION['Username'] =$Username;
             //Store active username in session var
+            $AvatarDir ="Images/Avatars/";
+            $_SESSION['ActiveAvatar']= $AvatarDir . $AvatarFile;
+            //Store users avatar in session variable
             header("Location: http://localhost/BRUNO/profilehome.html");
             //Redirect to profile page
           } else{

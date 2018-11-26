@@ -26,10 +26,16 @@ function generatePoID($mode) {
   $idfile->save('id.xml');
   return $ID;
 }
+
+$ImageDir ="Images/Posts/";
+$AudioDir ="Audio/Posts";
+$VideoDir ="Video/Posts";
+
+$UploadedFile = basename($_FILES["file"]["name"]);
+
   //Storing data from the form into variables
   $posttype = 'TEXT';             //$_POST['selection'];
-  //$poster = $_POST['active'];
-  $Content =  'This is a cool post';                  //$_POST['content'];
+  $Content =  'This is a cool post';      //$_POST['TContent'];
   $Caption = 'captionMAN';                 //$_POST['caption'];
 
   $Username = $_SESSION['Username'];
@@ -104,58 +110,80 @@ function generatePoID($mode) {
   $VideoInsert =" INSERT INTO Video(PostID, VContent,VCaption)
   VALUES('$PostID','$Content','$Caption')";
 
-  $PostInsertPage =" INSERT INTO Post(PostID, ProfileID, PageID, CreationDate)
-  VALUES('$PostID','$PrID', '$PaID','$CreationDate')";
+  //$PostInsertPage =" INSERT INTO Post(PostID, ProfileID, PageID, CreationDate)
+  //VALUES('$PostID','$PrID', '$PaID','$CreationDate')";
 
-  // if($BrunoCONN->query($PostInsertProfile) === TRUE){
-  //   if($posttype === 'TEXT'){
-  //     if($BrunoCONN->query($TextInsert) === TRUE){
-  //       echo "New post generated in database";
-  //       $BrunoCONN->close();
-  //     }else{
-  //       $poerror = "Error: ".$TextInsert."<br>". $BrunoCONN->error;
-  //       $_SESSION['Error'] = $poerror;
-  //       header("Location: http://localhost/BRUNO/error.php");
-  //       $BrunoCONN->close();
-  //     }
-  //   }else if($posttype === 'VIDEO'){
-  //       if($BrunoCONN->query($VideoInsert) === TRUE){
-  //         echo "New post generated in database";
-  //         $BrunoCONN->close();
-  //       }else{
-  //         $poerror = "Error: ".$VideoInsert."<br>". $BrunoCONN->error;
-  //         $_SESSION['Error'] = $poerror;
-  //         header("Location: http://localhost/BRUNO/error.php");
-  //         $BrunoCONN->close();
-  //       }
-  //   }else if($posttype === 'AUDIO'){
-  //       if($BrunoCONN->query($AudioInsert) === TRUE){
-  //         echo "New post generated in database";
-  //         $BrunoCONN->close();
-  //       }else{
-  //         $poerror = "Error: ".$AudioInsert. "<br>". $BrunoCONN->error;
-  //         $_SESSION['Error'] = $poerror;
-  //         header("Location: http://localhost/BRUNO/error.php");
-  //         $BrunoCONN->close();
-  //       }
-  //     }else{//$posttype ==== 'PHOTO'
-  //       if($BrunoCONN->query($PhotoInsert) === TRUE){
-  //         echo "New post generated in database";
-  //         $BrunoCONN->close();
-  //       }else{
-  //         $poerror = "Error: ".$PhotoInsert. "<br>". $BrunoCONN->error;
-  //         $_SESSION['Error'] = $poerror;
-  //         header("Location: http://localhost/BRUNO/error.php");
-  //         $BrunoCONN->close();
-  //       }
-  //     }
-  //   } else{
-  //       $poerror = "Error: ".$PostInsertProfile. "<br>". $BrunoCONN->error;
-  //       $_SESSION['Error'] = $poerror;
-  //       header("Location: http://localhost/BRUNO/error.php");
-  //       generatePoID(-1);
-  //       $BrunoCONN->close();
-  //     }
+  if($BrunoCONN->query($PostInsertProfile) === TRUE){
+    if($posttype === 'TEXT'){
+      if($BrunoCONN->query($TextInsert) === TRUE){
+        echo "New post generated in database";
+        header("Location: http://localhost/BRUNO/profilehome.html");
+        $BrunoCONN->close();
+      }else{
+        $poerror = "Error: ".$TextInsert."<br>". $BrunoCONN->error;
+        $_SESSION['Error'] = $poerror;
+        header("Location: http://localhost/BRUNO/error.php");
+        $BrunoCONN->close();
+      }
+    }else if($posttype === 'VIDEO'){
+      $TargetFilePath = $VideoDir .$UploadedFile;
+        if(move_uploaded_file($_FILES["file"]["tmp_name"])){
+          $Caption = $_POST['caption'];
+          $Content = $UploadedFile;
+            if($BrunoCONN->query($VideoInsert)=== TRUE){
+              echo "New post generated in database";
+              header("Location: http://localhost/BRUNO/profilehome.html");
+              $BrunoCONN->close();
+            }
+            else{
+              $poerror = "Error: ".$VideoInsert."<br>". $BrunoCONN->error;
+              $_SESSION['Error'] = $poerror;
+              header("Location: http://localhost/BRUNO/error.php");
+              $BrunoCONN->close();
+            }
+        }
+    }else if($posttype === 'AUDIO'){
+      $TargetFilePath = $AudioDir.$UploadedFile;
+      if(move_uploaded_file($_FILES["file"]["tmp_name"])){
+        $Caption = $_POST['caption'];
+        $Content = $UploadedFile;
+          if($BrunoCONN->query($AudioInsert) === TRUE){
+            echo "New post generated in database";
+            header("Location: http://localhost/BRUNO/profilehome.html");
+            $BrunoCONN->close();
+          }
+          else{
+            $poerror = "Error: ".$AudioInsert. "<br>". $BrunoCONN->error;
+            $_SESSION['Error'] = $poerror;
+            header("Location: http://localhost/BRUNO/error.php");
+            $BrunoCONN->close();
+        }
+      }
+      }else{//$posttype ==== 'PHOTO'
+        $TargetFilePath = $ImageDir .$UploadedFile;
+        if(move_uploaded_file($_FILES["file"]["tmp_name"])){
+        $Caption =$_POST['caption'];
+        $Content =$UploadedFile;
+        if($BrunoCONN->query($PhotoInsert) === TRUE){
+          echo "New post generated in database";
+          header("Location: http://localhost/BRUNO/profilehome.html");
+          $BrunoCONN->close();
+        }else{
+          $poerror = "Error: ".$PhotoInsert. "<br>". $BrunoCONN->error;
+          $_SESSION['Error'] = $poerror;
+          header("Location: http://localhost/BRUNO/error.php");
+          $BrunoCONN->close();
+        }
+      }
+    }
+    
+    } else{
+        $poerror = "Error: ".$PostInsertProfile. "<br>". $BrunoCONN->error;
+        $_SESSION['Error'] = $poerror;
+        header("Location: http://localhost/BRUNO/error.php");
+        generatePoID(-1);
+        $BrunoCONN->close();
+      }
 
 
 
@@ -164,35 +192,25 @@ function generatePoID($mode) {
   /*PAGE POSTING LOGIC*/
   ////////////////////////////////////////////
 
-    if($BrunoCONN->query($PostInsertPage) === TRUE){
-        if($posttype === 'TEXT'){
-          if($BrunoCONN->query($TextInsert) === TRUE){
-            echo "New post generated in database";
-            $BrunoCONN->close();
-          }else{
-            $poerror = "Error: ".$TextInsert."<br>". $BrunoCONN->error;
-            $_SESSION['Error'] = $poerror;
-            header("Location: http://localhost/BRUNO/error.php");
-            $BrunoCONN->close();
-          }
+  //   if($BrunoCONN->query($PostInsertPage) === TRUE){
+  //       if($posttype === 'TEXT'){
+  //         if($BrunoCONN->query($TextInsert) === TRUE){
+  //           echo "New post generated in database";
+  //           $BrunoCONN->close();
+  //         }else{
+  //           $poerror = "Error: ".$TextInsert."<br>". $BrunoCONN->error;
+  //           $_SESSION['Error'] = $poerror;
+  //           header("Location: http://localhost/BRUNO/error.php");
+  //           $BrunoCONN->close();
+  //         }
+  //
+  //   }
+  // }else{
+  //     $poerror = "Error: ".$PostInsertPage. "<br>". $BrunoCONN->error;
+  //     $_SESSION['Error'] = $poerror;
+  //     header("Location: http://localhost/BRUNO/error.php");
+  //     $BrunoCONN->close();
+  //   }
 
-    }
-  }else{
-      $poerror = "Error: ".$PostInsertPage. "<br>". $BrunoCONN->error;
-      $_SESSION['Error'] = $poerror;
-      header("Location: http://localhost/BRUNO/error.php");
-      $BrunoCONN->close();
-    }
-
-
-  // if($posttype === 'TEXT'){
-  //
-  // }
-  //
-  // else if($posttype === 'VIDEO'){}
-  //
-  // else if($posttype === 'AUDIO'){}
-  //
-  // else{}                //'PHOTO'
 
 ?>
