@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 require_once "bruno-config.php";
 
 $Username = $_POST['username'];
