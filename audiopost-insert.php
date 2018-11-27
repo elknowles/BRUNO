@@ -23,12 +23,12 @@ function generatePoID($mode) {
 
 require_once 'get-profileid.php';
 
-$VideoDir ="Video/Posts/";
+$AudioDir ="Audio/Posts/";
 $UploadedFile = basename($_FILES["file"]["name"]);
-$TargetFilePath = $VideoDir .$UploadedFile;
+$TargetFilePath = $AudioDir .$UploadedFile;
 
 $Content = $UploadedFile;
-$Caption  = "Vid caption";
+$Caption  = "Aud caption";
 
 $PostID = generatePoID(0);
 $CreationDate = date('Y-m-d H:i:s');
@@ -36,21 +36,22 @@ $CreationDate = date('Y-m-d H:i:s');
 $PostInsertProfile =" INSERT INTO Post(PostID, ProfileID, PageID, CreationDate)
 VALUES('$PostID','$PrID', NULL,'$CreationDate')";
 //
-$VideoInsert =" INSERT INTO Video(PostID, VContent,VCaption)
+$AudioInsert =" INSERT INTO Audio(PostID, AContent,ACaption)
 VALUES('$PostID','$Content','$Caption')";
 
 if($BrunoCONN->query($PostInsertProfile) === TRUE){
   if(move_uploaded_file($_FILES["file"]["tmp_name"], $TargetFilePath)){
 
-    if($BrunoCONN->query($VideoInsert) === TRUE){
+    if($BrunoCONN->query($AudioInsert) === TRUE){
       echo "New post generated in database";
       header("Location: http://localhost/BRUNO/profilehome.html");
       $BrunoCONN->close();
     }else{
-      $poerror = "Error: ".$VideoInsert."<br>". $BrunoCONN->error;
+      $poerror = "Error: ".$AudioInsert."<br>". $BrunoCONN->error;
       $_SESSION['Error'] = $poerror;
       header("Location: http://localhost/BRUNO/error.php");
       $BrunoCONN->close();
+      generatePoID(-1);
     }
   }
   else{
