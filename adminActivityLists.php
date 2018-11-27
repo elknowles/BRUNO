@@ -6,7 +6,7 @@ session_start();
 
 require_once "bruno-config.php";
 
-$SelectionDate = $_POST['date'];
+$SelectionDate = $_POST['selection'];
 $NumPosts=0;
 $NumComm =0;
 
@@ -21,7 +21,7 @@ if($PostsCount = $BrunoCONN->prepare($AllPostsSQL)){
   $PostsCount->bind_result($NumPosts);
   if($PostsCount->num_rows >0){
     if($PostsCount->fetch()){
-      echo "Number of posts created on".$SelectionDate. ": ".$NumPosts ."<br>";
+      echo "Number of posts created on ".$SelectionDate. ": ".$NumPosts ."<br>";
 
     }
   }
