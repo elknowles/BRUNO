@@ -1,12 +1,6 @@
 <?php
 session_start();
-?>
-<?php
-	require_once "bruno-config.php";
-	//$Recipient = $_POST['Recipient'];
-	//$_SESSION['Recipient'] =$Recipient;
-	//echo $Recipient;
-	//$_POST['recipent'];
+require_once "bruno-config.php";
 ?>
 <!DOCTYPE html>
 <html>

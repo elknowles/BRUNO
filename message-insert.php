@@ -14,7 +14,7 @@ function generateMsgID($mode) {
   }
   $idroot = $idfile->documentElement;
   $ID = $idroot->getElementsByTagName('msgid')->item(0)->textContent;
-  if($mode === 0){
+  if($mode == 0){
     ++$ID;
   }
   else{

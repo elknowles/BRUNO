@@ -1,4 +1,10 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
+<?php
+$_SESSION['ActivePageID'] = $_POST['pageid'];
+?>
 <html>
 
 <head>
@@ -11,7 +17,7 @@
 <body>
 	<section class="hero">
 		<div class="hero-inner">
-			<h1>THIS IS A PAGE</h1>
+			<h1> <?php $_POST['pageid']?> </h1>
 			<p><span id="datetime"></span></p>
 			<script>
 				var dt = new Date();
