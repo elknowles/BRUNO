@@ -33,7 +33,7 @@ if($GetUserInfo = $BrunoCONN->prepare($UserInfoSQL)){
             $AvatarDir ="Images/Avatars/";
             $_SESSION['ActiveAvatar']= $AvatarDir . $AvatarFile;
             //Store users avatar in session variable
-            header("Location: http://localhost/BRUNO/profilehome.html");
+            header("Location: http://localhost/BRUNO/profilehome.php");
             //Redirect to profile page
           } else{
             $lgerror = "Incorrect password entered";
