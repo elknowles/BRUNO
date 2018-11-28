@@ -25,7 +25,7 @@ session_start();
 				<div class="inner"><button onclick="window.location.href='posts.php'" class="btn circ" style="background-color: transparent; width: 125px; height: 125px; border: 2px solid white; color: white; padding: 8px 20px; border-radius: 50%; font-size: 20px; font-weight: bold;text-align: center;">Feed</button></div>
 				<div class="inner"><button onclick="window.location.href='messages.php'" class="btn circ" style="background-color: transparent; width: 125px; height: 125px; border: 2px solid white; color: white; padding: 8px 20px; border-radius: 50%; font-size: 20px; font-weight: bold;text-align: center;">Messages</button></div>
 				<div class="inner"><button onclick="window.location.href='alerts.php'" class="btn circ" style="background-color: transparent; width: 125px; height: 125px; border: 2px solid white; color: white; padding: 8px 20px; border-radius: 50%; font-size: 20px; font-weight: bold;text-align: center;">Alerts</button></div>
-				<div class="inner"><button onclick="window.location.href='settings.php'" class="btn circ" style="background-color: transparent; width: 125px; height: 125px; border: 2px solid white; color: white; padding: 8px 20px; border-radius: 50%; font-size: 20px; font-weight: bold;text-align: center;">Settings</button></div>
+				<div class="inner"><button onclick="window.location.href='settings.html'" class="btn circ" style="background-color: transparent; width: 125px; height: 125px; border: 2px solid white; color: white; padding: 8px 20px; border-radius: 50%; font-size: 20px; font-weight: bold;text-align: center;">Settings</button></div>
 			</div>
 		</div>
 		<ul>

@@ -127,8 +127,8 @@ session_start();
 	</div>
 
 	<div id="Text" class="tabcontent">
- 		<img src="<?php echo $_SESSION['ActiveAvatar']?>" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
-			<form action="textpost-insert.php" method="post">
+ 		<img src="profilePlaceHolder.png" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
+			<form action="pgtxtpost-insert.php" method="post">
 
 				<input type="text" placeholder="Twenty yen for your thoughts..." name="TContent" style="font-size: 18px; font-family: AnonymousProRegular; position: fixed; top: 18%; left: 23%; width: 600px; height: 600px; border-radius: 50%;">
 
@@ -159,9 +159,9 @@ session_start();
 
 	<div id="Audio" class="tabcontent">
  		<img src="<?php echo $_SESSION['ActiveAvatar']?>" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
-			<form action="audiopost-insert.php" method="post" enctype="multipart/form-data">
+			<form action="audiopost-insert.php">
 				<img id="soundwave" style="position: fixed; top: 18%; left: 23%; width: 600px; height: 600px; border-radius: 50%">
-				<input type="file" name="file" accept="audio/*" onchange="document.getElementById('audioUpload').src = window.URL.createObjectURL(this.files[0])">
+				<input type="file" accept="audio/*" onchange="document.getElementById('audioUpload').src = window.URL.createObjectURL(this.files[0])">
 				<input type="submit" value="Submit" style="position: fixed; bottom: 9%; right: 43%; width: 128px; height: 128px; border-radius: 50%;">
 			</form>
 	</div>
