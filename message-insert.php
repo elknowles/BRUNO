@@ -56,6 +56,7 @@ $InsertMessage =" INSERT INTO Message(MessageID, SenderID, RecipientID, `TimeSta
 VALUES('$MessageID','$PrID','$RecipPrID','$CreationDate','$Content')";
 if($BrunoCONN->query($InsertMessage) === TRUE){
   echo "message sent to ",$RecipUsername. "<br>";
+  echo '<p> <a href="profileHome.php" style="color:dodgerblue" >Go home</a></p>';
   $BrunoCONN->close();
 }else{
   $_SESSION['Error'] = "Error: ".$InsertMessage. "<br>". $BrunoCONN->error;
