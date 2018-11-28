@@ -21,7 +21,7 @@ function generatePoID($mode) {
   return $ID;
 }
 
-require_once 'get-pageid.php';
+$PgID = $_SESSION['ActivePageID'];
 
 $VideoDir ="Video/Posts/";
 $UploadedFile = basename($_FILES["file"]["name"]);
@@ -44,7 +44,7 @@ if($BrunoCONN->query($PostInsertPage) === TRUE){
 
     if($BrunoCONN->query($VideoInsert) === TRUE){
       echo "New post generated in database";
-      header("Location: http://localhost/BRUNO/profilehome.html");
+      header("Location: http://localhost/BRUNO/pageHome.php");
       $BrunoCONN->close();
     }else{
       $poerror = "Error: ".$VideoInsert."<br>". $BrunoCONN->error;

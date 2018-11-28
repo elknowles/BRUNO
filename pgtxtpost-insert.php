@@ -21,7 +21,7 @@ function generatePoID($mode) {
   return $ID;
 }
 
-require_once 'get-pageid.php';
+$PgID = $_SESSION['ActivePageID'];
 
 $TContent = $_POST['TContent'];
 $PostID = generatePoID(0);
@@ -37,7 +37,7 @@ if($BrunoCONN->query($PostInsertPage) === TRUE){
 
   if($BrunoCONN->query($TextInsert) === TRUE){
     echo "New post generated in database";
-    header("Location: http://localhost/BRUNO/profilehome.html");
+    header("Location: http://localhost/BRUNO/pageHome.php");
     $BrunoCONN->close();
   }else{
     $poerror = "Error: ".$TextInsert."<br>". $BrunoCONN->error;

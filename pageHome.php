@@ -17,7 +17,7 @@ $_SESSION['ActivePageID'] = $_POST['pageid'];
 <body>
 	<section class="hero">
 		<div class="hero-inner">
-			<h1> <?php $_POST['pageid']?> </h1>
+			<h1> <?php echo $_POST['pageid']?> </h1>
 			<p><span id="datetime"></span></p>
 			<script>
 				var dt = new Date();
