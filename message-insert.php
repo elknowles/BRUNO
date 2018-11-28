@@ -4,9 +4,7 @@ session_start();
 <html>
 <body>
 <?php
-
 require_once "bruno-config.php";
-
 function generateMsgID($mode) {
   $idfile = new DOMDocument();
   $idfile->load('id.xml');
@@ -26,12 +24,10 @@ function generateMsgID($mode) {
   $idfile->save('id.xml');
   return $ID;
 }
-
 $MessageID = generateMsgID(0);
 $CreationDate = date('Y-m-d H:i:s');
 $Content = $_POST['TContent'];
 $RecipUsername = $_SESSION['RecipUsr'];
-
 $RecipientIDSQL = "SELECT ProfileID FROM Profile WHERE Username =?";
 if($GetUserInfo = $BrunoCONN->prepare($RecipientIDSQL)){
 	  $GetUserInfo->bind_param("s",$ParamUsr);
@@ -55,12 +51,9 @@ if($GetUserInfo = $BrunoCONN->prepare($RecipientIDSQL)){
 	      }
 	  }
 	}
-
   require_once "get-profileid.php";
-
 $InsertMessage =" INSERT INTO Message(MessageID, SenderID, RecipientID, `TimeStamp`, `Text`)
 VALUES('$MessageID','$PrID','$RecipPrID','$CreationDate','$Content')";
-
 if($BrunoCONN->query($InsertMessage) === TRUE){
   echo "message sent to ",$RecipUsername. "<br>";
   $BrunoCONN->close();
