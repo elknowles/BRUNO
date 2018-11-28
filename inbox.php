@@ -20,7 +20,7 @@ if($Mymsgs = $BrunoCONN->prepare($UsrMessagesSQL)){
       while ($Mymsgs->fetch()) {
           echo $SenderUsr ."<br>";
           echo $Content. "<br>";
-          echo "At". $CreationDate. "<br>";
+          echo "At :". $CreationDate. "<br>";
           echo $MSGID. "<br>";
           echo "-----STOP-----";
       }
