@@ -159,7 +159,7 @@ session_start();
 
 	<div id="Audio" class="tabcontent">
  		<img src="<?php echo $_SESSION['ActiveAvatar']?>" style="position: fixed; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
-			<form action="audiopost-insert.php">
+			<form action="audiopost-insert.php" method="submit" enctype="multipart/form-data">
 				<img id="soundwave" style="position: fixed; top: 18%; left: 23%; width: 600px; height: 600px; border-radius: 50%">
 				<input type="file" accept="audio/*" onchange="document.getElementById('audioUpload').src = window.URL.createObjectURL(this.files[0])">
 				<input type="submit" value="Submit" style="position: fixed; bottom: 9%; right: 43%; width: 128px; height: 128px; border-radius: 50%;">

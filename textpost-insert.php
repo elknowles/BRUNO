@@ -45,7 +45,6 @@ if($BrunoCONN->query($PostInsertProfile) === TRUE){
     header("Location: http://localhost/BRUNO/error.php");
     $BrunoCONN->close();
     generatePoID(-1);
-
   }
 }
 else{
