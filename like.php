@@ -3,37 +3,6 @@ session_start();
 ?>
 <?php
 	require_once "bruno-config.php";
-
-	$Recipient = $_POST['Recipient'];
-	$_SESSION['Recipient'] =$Recipient;
-	echo $Recipient;
-	$RecipientIDSQL = "SELECT PostID FROM Post WHERE PostID =?";
-
-	if($GetUserInfo = $BrunoCONN->prepare($UserInfoSQL)){
-	  $GetUserInfo->bind_param("s",$ParamUsr);
-	  //Designate variable for username binding
-	  $ParamUsr =$Username;
-	  //Actually pass the username into the bound variable
-	  if($GetUserInfo->execute()){
-	    //Execute query
-	      $GetUserInfo->store_result();
-	      //Store result of query
-	      if($GetUserInfo->num_rows == 1){
-	        //See if username found in database
-	        $GetUserInfo->bind_result($Username,$AvatarFile);
-	        header("sendMessage.php");
-	      }else {
-	        $lgerror = 'Username not located in database';
-	        $_SESSION['Error'] =$lgerror;
-	      }
-	  }
-	}
-	$PostInsertMessage =" INSERT INTO Message(MessageID, SenderID, RecipientID, TimeStamp)
-  	VALUES('$MessageID','$PrID', NULL,'$CreationDate')";
-
-$_POST['recipent'];
-
-
 ?>
 <!DOCTYPE html>
 <html>
