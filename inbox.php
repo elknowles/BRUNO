@@ -9,7 +9,7 @@ session_start();
 require_once 'bruno-config.php';
 require_once 'get-profileid.php';
 
-$UsrMessagesSQL = "SELECT M.MessageID, M.TimeStamp, M.Text, P.Username FROM Message as M JOIN Profile as P ON P.ProfileID = M.RecipientID WHERE SenderID =?";
+$UsrMessagesSQL = "SELECT M.MessageID, M.TimeStamp, M.Text, P.Username FROM Message as M JOIN Profile as P ON P.ProfileID = M.SenderID WHERE RecipientID =?";
 if($Mymsgs = $BrunoCONN->prepare($UsrMessagesSQL)){
   $Mymsgs->bind_param("s",$ParamID);
   $ParamID = $PrID;
@@ -22,7 +22,7 @@ if($Mymsgs = $BrunoCONN->prepare($UsrMessagesSQL)){
           echo $Content. "<br>";
           echo "At :". $CreationDate. "<br>";
           echo $MSGID. "<br>";
-          echo "-----STOP-----";
+          echo "-----STOP-----<br><br>";
       }
     }
     else{
