@@ -6,6 +6,7 @@ echo "it liked";
 <body>
 <?php
 require_once "bruno-config.php";
+require_once "get-profileid.php";
 function generateLikeID($mode) {
   $idfile = new DOMDocument();
   $idfile->load('id.xml');
@@ -28,15 +29,15 @@ function generateLikeID($mode) {
 
 $LikeID = generateLikeID(0);
 $RecipPostID = $_SESSION['RecipUsr'];
-$ProfileID = "A00000000011";
 $CreationDate = date('Y-m-d H:i:s');
 
 $_SESSION['RecipUsr'] =$_POST['recipient'];
 
 $InsertLike =" INSERT INTO `Like`(LikeID, PostID, ProfileID, CreationDate)
-VALUES('$LikeID','$RecipPostID','$ProfileID','$CreationDate')";
+VALUES('$LikeID','$RecipPostID','$PrID','$CreationDate')";
 if($BrunoCONN->query($InsertLike) === TRUE){
   echo "Liked ",$RecipPostID. "<br>";
+  echo '<p> <a href="profileHome.php" style="color:dodgerblue" >Go home</a></p>';
   $BrunoCONN->close();
 }else{
   $_SESSION['Error'] = "Error: ".$InsertMessage. "<br>". $BrunoCONN->error;
@@ -45,9 +46,5 @@ if($BrunoCONN->query($InsertLike) === TRUE){
   generateMsgID(-1);
 }
 ?>
-<h1><?php echo $_POST['recipient']?></h1>
-<h1><?php echo $LikeID?></h1>
-<h1><?php echo $ProfileID?></h1>
-<h1><?php echo $CreationDate?></h1>
 </body>
 </html>
