@@ -35,7 +35,7 @@ if($GetPageID = $BrunoCONN->prepare($PageIDSQL)){
   if($GetPageID->execute()){
     $GetPageID->store_result();
     if($GetPageID->num_rows == 1 ){
-      $GetPageID->bind_result($PaID);
+      $GetPageID->bind_result($PgID);
       if($GetPageID->fetch()){
         //PageID stored in $PaID variable
       }

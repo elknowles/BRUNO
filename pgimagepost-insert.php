@@ -23,29 +23,41 @@ function generatePoID($mode) {
 
 require_once 'get-pageid.php';
 
-$TContent = $_POST['TContent'];
+$ImageDir ="Images/Posts/";
+$UploadedFile = basename($_FILES["file"]["name"]);
+$TargetFilePath = $ImageDir .$UploadedFile;
+
+$Content = $UploadedFile;
+$Caption  = "Img caption";
+
 $PostID = generatePoID(0);
 $CreationDate = date('Y-m-d H:i:s');
 
 $PostInsertPage =" INSERT INTO Post(PostID, ProfileID, PageID, CreationDate)
 VALUES('$PostID',NULL,'$PgID','$CreationDate')";
 //
-$TextInsert =" INSERT INTO Text(PostID, TContent)
-VALUES('$PostID','$Content')";
+$PhotoInsert =" INSERT INTO Photo(PostID, PContent,PCaption)
+VALUES('$PostID','$Content','$Caption')";
 
-if($BrunoCONN->query($PostInsertPage) === TRUE){
+if($BrunoCONN->query($PostInsertProfile) === TRUE){
+  if(move_uploaded_file($_FILES["file"]["tmp_name"], $TargetFilePath)){
 
-  if($BrunoCONN->query($TextInsert) === TRUE){
-    echo "New post generated in database";
-    header("Location: http://localhost/BRUNO/profilehome.html");
-    $BrunoCONN->close();
-  }else{
-    $poerror = "Error: ".$TextInsert."<br>". $BrunoCONN->error;
-    $_SESSION['Error'] = $poerror;
+    if($BrunoCONN->query($PhotoInsert) === TRUE){
+      echo "New post generated in database";
+      header("Location: http://localhost/BRUNO/profilehome.html");
+      $BrunoCONN->close();
+    }else{
+      $poerror = "Error: ".$PhotoInsert."<br>". $BrunoCONN->error;
+      $_SESSION['Error'] = $poerror;
+      header("Location: http://localhost/BRUNO/error.php");
+      $BrunoCONN->close();
+    }
+  }
+  else{
+    $_SESSION['Error'] = "Not uploaded because of error #".$_FILES["file"]["error"];
     header("Location: http://localhost/BRUNO/error.php");
-    $BrunoCONN->close();
     generatePoID(-1);
-
+    $BrunoCONN->close();
   }
 }
 else{
