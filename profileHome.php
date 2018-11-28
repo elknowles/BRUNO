@@ -130,7 +130,7 @@ session_start();
 		  /*-------------VIDEO---------------*/
 		  if($AdminPgInfo->execute()){
 		    $AdminPgInfo->store_result();
-		    $AdminPgInfo->bind_result($PostID,$ProfileID,$PageID,$VContent,$Vcaption,$CreationDate);
+		    $AdminPgInfo->bind_result($Username,$PostID,$ProfileID,$PageID,$VContent,$Vcaption,$CreationDate);
 		    $Rowcount = $AdminPgInfo->num_rows;
 		    if($Rowcount > 0){
 
@@ -165,7 +165,7 @@ session_start();
 		  /*-------------VIDEO---------------*/
 		  if($AdminPgInfo->execute()){
 		    $AdminPgInfo->store_result();
-		    $AdminPgInfo->bind_result($PostID,$ProfileID,$PageID,$AContent,$Acaption,$CreationDate);
+		    $AdminPgInfo->bind_result($Username,$PostID,$ProfileID,$PageID,$AContent,$Acaption,$CreationDate);
 		    $Rowcount = $AdminPgInfo->num_rows;
 		    if($Rowcount > 0){
 

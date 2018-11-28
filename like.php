@@ -58,7 +58,7 @@ $_POST['recipent'];
 <body>
 	<section class="hero">
 		<div class="hero-inner">
-			<form id="recipentSelection" method="post">
+			<form action="likeDatabase.php" id="recipentSelection" method="post">
 				<h1>LIKES</h1>
 				<h3>Select the recipient</h3>
 				<tr>
@@ -67,7 +67,7 @@ $_POST['recipent'];
 						<select name="recipient" id="recipient" style="color: black" value="">
 						<?php 
 						require_once 'bruno-config.php';
-							$sql = mysqli_query($BrunoCONN, "SELECT P.PostID FROM Post");
+							$sql = mysqli_query($BrunoCONN, "SELECT P.PostID FROM Post as P");
 							while ($row = $sql->fetch_assoc()){
 							echo "<option>" . $row['PostID'] . "</option>";
 							}
