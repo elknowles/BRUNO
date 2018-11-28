@@ -23,7 +23,7 @@ function generatePoID($mode) {
 
 require_once 'get-profileid.php';
 
-$TContent = $_POST['TContent'];
+$Content = $_POST['TContent'];
 $PostID = generatePoID(0);
 $CreationDate = date('Y-m-d H:i:s');
 
