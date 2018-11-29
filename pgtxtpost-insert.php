@@ -1,6 +1,6 @@
 <?php
 require_once 'bruno-config.php';
-
+session_start();
 function generatePoID($mode) {
   $idfile = new DOMDocument();
   $idfile->load('id.xml');
@@ -22,6 +22,7 @@ function generatePoID($mode) {
 }
 
 $PgID = $_SESSION['ActivePageID'];
+$_SESSION['APgID'] =$PgID;
 
 $TContent = $_POST['TContent'];
 $PostID = generatePoID(0);

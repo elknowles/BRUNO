@@ -22,6 +22,7 @@ function generatePoID($mode) {
 }
 
 $PgID = $_SESSION['ActivePageID'];
+$_SESSION['APgID'] =$PgID;
 
 $AudioDir ="Audio/Posts/";
 $UploadedFile = basename($_FILES["file"]["name"]);

@@ -19,7 +19,7 @@ require_once 'bruno-config.php';
 <body>
 	<section class="hero">
 		<div class="hero-inner">
-			<h1> <?php echo $PGname ?> </h1>
+			<h1> <?php echo $_POST['pageid']. $_SESSION['APgID'] ?> </h1>
 			<p><span id="datetime"></span></p>
 			<script>
 				var dt = new Date();
