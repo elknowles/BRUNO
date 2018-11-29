@@ -1,6 +1,6 @@
 <?php
 require_once 'bruno-config.php';
-
+session_start();
 function generatePoID($mode) {
   $idfile = new DOMDocument();
   $idfile->load('id.xml');

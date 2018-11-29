@@ -4,6 +4,8 @@ session_start();
 <!DOCTYPE html>
 <?php
 $_SESSION['ActivePageID'] = $_POST['pageid'];
+require_once 'bruno-config.php';
+//require_once 'get-pagename.php';
 ?>
 <html>
 
@@ -17,7 +19,7 @@ $_SESSION['ActivePageID'] = $_POST['pageid'];
 <body>
 	<section class="hero">
 		<div class="hero-inner">
-			<h1> <?php echo $_POST['pageid']?> </h1>
+			<h1> <?php echo $PGname ?> </h1>
 			<p><span id="datetime"></span></p>
 			<script>
 				var dt = new Date();
