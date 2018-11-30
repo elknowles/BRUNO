@@ -117,7 +117,7 @@ $UploadedFile = basename($_FILES["file"]["name"]);
     if($posttype === 'TEXT'){
       if($BrunoCONN->query($TextInsert) === TRUE){
         echo "New post generated in database";
-        header("Location: http://localhost/BRUNO/profilehome.html");
+        header("Location: http://localhost/BRUNO/profileHome.php");
         $BrunoCONN->close();
       }else{
         $poerror = "Error: ".$TextInsert."<br>". $BrunoCONN->error;
@@ -132,7 +132,7 @@ $UploadedFile = basename($_FILES["file"]["name"]);
           $Content = $UploadedFile;
             if($BrunoCONN->query($VideoInsert)=== TRUE){
               echo "New post generated in database";
-              header("Location: http://localhost/BRUNO/profilehome.html");
+              header("Location: http://localhost/BRUNO/profileHome.php");
               $BrunoCONN->close();
             }
             else{
@@ -149,7 +149,7 @@ $UploadedFile = basename($_FILES["file"]["name"]);
         $Content = $UploadedFile;
           if($BrunoCONN->query($AudioInsert) === TRUE){
             echo "New post generated in database";
-            header("Location: http://localhost/BRUNO/profilehome.html");
+            header("Location: http://localhost/BRUNO/profileHome.php");
             $BrunoCONN->close();
           }
           else{
@@ -166,7 +166,7 @@ $UploadedFile = basename($_FILES["file"]["name"]);
         $Content =$UploadedFile;
         if($BrunoCONN->query($PhotoInsert) === TRUE){
           echo "New post generated in database";
-          header("Location: http://localhost/BRUNO/profilehome.html");
+          header("Location: http://localhost/BRUNO/profileHome.php");
           $BrunoCONN->close();
         }else{
           $poerror = "Error: ".$PhotoInsert. "<br>". $BrunoCONN->error;

@@ -48,7 +48,7 @@ VALUES('$ProfileID','$Fname','$Mname','$Lname','$UsrName','$Pass','$Email','$Mob
 if($BrunoCONN->query($ProfileInsert) === TRUE){
   echo "New profile generated in database";
   $_SESSION['Username'] = $UsrName;
-  header("Location: http://localhost/BRUNO/profilehome.html");
+  header("Location: http://localhost/BRUNO/profileHome.php");
   $BrunoCONN->close();
 }
 else {

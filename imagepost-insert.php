@@ -44,7 +44,7 @@ if($BrunoCONN->query($PostInsertProfile) === TRUE){
 
     if($BrunoCONN->query($PhotoInsert) === TRUE){
       echo "New post generated in database";
-      header("Location: http://localhost/BRUNO/profilehome.html");
+      header("Location: http://localhost/BRUNO/profileHome.php");
       $BrunoCONN->close();
     }else{
       $poerror = "Error: ".$PhotoInsert."<br>". $BrunoCONN->error;

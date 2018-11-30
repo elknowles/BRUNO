@@ -44,7 +44,7 @@ $GetProfileID->close();
       if($AddAvatar->execute()){
         //Execute query
         $_SESSION['ActiveAvatar'] = $TargetFilePath;
-        header("Location: http://localhost/BRUNO/profilehome.html");
+        header("Location: http://localhost/BRUNO/profileHome.php");
         $BrunoCONN->close();
       }
       else{
