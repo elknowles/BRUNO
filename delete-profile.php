@@ -12,6 +12,7 @@ if($BrunoCONN->query($ProfileDeleteSQL) === TRUE){
   header("Location: http://localhost/BRUNO/");
 }else{
     $_SESSION['Error'] = $ProfileDeleteSQL. "<br>" . $BrunoCONN->error;
+      header("Location: http://localhost/BRUNO/error.php");
   }
 
   session_unset();

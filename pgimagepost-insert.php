@@ -62,7 +62,7 @@ if($BrunoCONN->query($PostInsertPage) === TRUE){
   }
 }
 else{
-    echo "Error: ".$PostInsertPage. "<br>". $BrunoCONN->error;
+    $poerror = "Error: ".$PostInsertPage. "<br>". $BrunoCONN->error;
     $_SESSION['Error'] = $poerror;
     header("Location: http://localhost/BRUNO/error.php");
     generatePoID(-1);

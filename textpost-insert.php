@@ -37,7 +37,7 @@ if($BrunoCONN->query($PostInsertProfile) === TRUE){
 
   if($BrunoCONN->query($TextInsert) === TRUE){
     echo "New post generated in database";
-    header("Location: http://localhost/BRUNO/profilehome.html");
+    header("Location: http://localhost/BRUNO/profilehome.php");
     $BrunoCONN->close();
   }else{
     $poerror = "Error: ".$TextInsert."<br>". $BrunoCONN->error;

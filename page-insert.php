@@ -58,6 +58,8 @@ function generatePaID($mode) {
   //Execute generated query
   if($BrunoCONN->query($PageInsert) === TRUE){
     echo "New page generated in database";
+    header("Location: http://localhost/BRUNO/pageHome.php");
+    $_SESSION['APgID'] =$PageID;
     $BrunoCONN->close();
   }
   else {

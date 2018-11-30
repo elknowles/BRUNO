@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>UPDATE PAGE</title>
+	<link rel="stylesheet" href="style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<section class="signStyle">
+	<form action="page-update.php" method="post" enctype="multipart/form-data" style="border:1px solid #ccc">
+		<div class="container-fluid">
+			<h1>Update Page</h1>
+
+			<div class="row">
+				<div class="col-md-12">
+					<label for="pageName"><b>Page Name</b></label>
+					<input type="text" placeholder="Enter Page Name" name="pageName" maxlength="100" required="1">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<label for="description"><b>Description</b></label>
+					<input type="text" placeholder="Enter Description" name="description" maxlength="100" required="1">
+				</div>
+				<div class="col-md-6">
+					<label for="category"><b>Category</b></label>
+					<input type="text" name="category" maxlength="100" required="1">
+				</div>
+			</div>
+    <div class="row">
+      <div class="col-md-12" style="text-align: center">
+        <label for="image"><b>Upload Image</b></label>
+        <input type="file" name="file" accept="image/*">
+      </div>
+    </div>
+
+			<div class="clearfix">
+      			<button onclick="window.location.href='settings.html'" id="signUpCancel" type="button" class="cancelbtn">Cancel</button>
+     		 	<button type="submit" class="signupbtn">Update</button>
+     		</div>
+     	</div>
+	</form>
+</section>
+</body>
+
+</html>
