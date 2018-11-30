@@ -39,10 +39,11 @@ $MobileNum = $BrunoCONN->real_escape_string($_POST["mobileNum"]);
 $CreationDate = date('Y-m-d H:i:s');
 $Bdate =  $_POST["birthdate"];
 $Privacy = $_POST["privacy"];
+$Avatar = 'profilePlaceholder.png';
 
 //Create query to generate new profile
 $ProfileInsert = "INSERT INTO Profile (ProfileID,FName,MName,LName,Username,Password,Email,MobileNum,CreationDate,BirthDate,Privacy,Avatar)
-VALUES('$ProfileID','$Fname','$Mname','$Lname','$UsrName','$Pass','$Email','$MobileNum','$CreationDate','$Bdate','$Privacy',profilePlaceHolder.png)";
+VALUES('$ProfileID','$Fname','$Mname','$Lname','$UsrName','$Pass','$Email','$MobileNum','$CreationDate','$Bdate','$Privacy', '$Avatar')";
 
 //Execute generated query
 if($BrunoCONN->query($ProfileInsert) === TRUE){
