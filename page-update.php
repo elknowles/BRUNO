@@ -14,7 +14,7 @@ $actPgId = $_SESSION['APgID'];
 $PageName = $_POST['pageName'];
 $PageDesc = $_POST['description'];
 $PageCat = $_POST['category'];
-$PageImg = basename($_FILES["file"["name"]]);
+$PageImg = basename($_FILES["file"]["name"]);
 
 $TargetFilePath = $ImageDir. $PageImg;
 
