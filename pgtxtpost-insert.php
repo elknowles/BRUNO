@@ -21,8 +21,8 @@ function generatePoID($mode) {
   return $ID;
 }
 
-$PgID = $_SESSION['ActivePageID'];
-$_SESSION['APgID'] =$PgID;
+$PgID = $_SESSION['APgID'];
+
 
 $TContent = $_POST['TContent'];
 $PostID = generatePoID(0);
