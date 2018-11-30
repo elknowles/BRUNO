@@ -101,10 +101,10 @@ session_start();
 		    if($Rowcount > 0){
 
 		      while ($AdminPgInfo->fetch()) {
-		      	echo 'Username' .$Username. "<br>";
+		      	echo 'Username: ' .$Username. "<br>";
 		      	echo 'PostID: ' .$PostID. "<br>";
-		        echo 'PContent:' .$PContent. "<br>";
-		        echo 'PCaption:' .$Pcaption. "<br>";
+		        echo 'PContent: ' .$PContent. "<br>";
+		        echo 'PCaption: ' .$Pcaption. "<br>";
 		        echo 'CreationDate: ' .$CreationDate. "<br>";
 		        echo "--IMGPOST-- <br>";
 		      }
@@ -136,10 +136,10 @@ session_start();
 		    if($Rowcount > 0){
 
 		      while ($AdminPgInfo->fetch()) {
-		      	echo 'Username' .$Username. "<br>";
+		      	echo 'Username: ' .$Username. "<br>";
 		      	echo 'PostID: ' .$PostID. "<br>";
-		        echo 'VContent:' .$VContent. "<br>";
-		        echo 'VCaption:' .$Vcaption. "<br>";
+		        echo 'VContent: ' .$VContent. "<br>";
+		        echo 'VCaption: ' .$Vcaption. "<br>";
 		        echo 'CreationDate: ' .$CreationDate. "<br>";
 		        echo "--VIDPOST-- <br>";
 		      }
@@ -171,10 +171,10 @@ session_start();
 		    if($Rowcount > 0){
 
 		      while ($AdminPgInfo->fetch()) {
-		        echo 'Username' .$Username. "<br>";
+		        echo 'Username: ' .$Username. "<br>";
 		        echo 'PostID: ' .$PostID. "<br>";
-		        echo 'AContent:' .$AContent. "<br>";
-		        echo 'ACaption:' .$Acaption. "<br>";
+		        echo 'AContent: ' .$AContent. "<br>";
+		        echo 'ACaption: ' .$Acaption. "<br>";
 		        echo 'CreationDate: ' .$CreationDate. "<br>";
 		        echo "--AUDPOST-- <br>";
 		      }
