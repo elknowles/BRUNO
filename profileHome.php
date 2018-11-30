@@ -15,6 +15,7 @@ session_start();
 <body>
 	<section class="hero">
 		<div class="hero-inner">
+      <img src="<?php echo $_SESSION['ActiveAvatar']?>" alt="profilePlaceHolder.png" onerror=this.src="profilePlaceholder.png" style="position: absolute; top: 8%; left: 20%; width: 128px; height: 128px; border-radius: 50%;">
 			<h1><?php echo $_SESSION['Username'] ?></h1>
 			<p><span id="datetime"></span></p>
 			<script>

@@ -41,8 +41,8 @@ $Bdate =  $_POST["birthdate"];
 $Privacy = $_POST["privacy"];
 
 //Create query to generate new profile
-$ProfileInsert = "INSERT INTO Profile (ProfileID,FName,MName,LName,Username,Password,Email,MobileNum,CreationDate,BirthDate,Privacy)
-VALUES('$ProfileID','$Fname','$Mname','$Lname','$UsrName','$Pass','$Email','$MobileNum','$CreationDate','$Bdate','$Privacy')";
+$ProfileInsert = "INSERT INTO Profile (ProfileID,FName,MName,LName,Username,Password,Email,MobileNum,CreationDate,BirthDate,Privacy,Avatar)
+VALUES('$ProfileID','$Fname','$Mname','$Lname','$UsrName','$Pass','$Email','$MobileNum','$CreationDate','$Bdate','$Privacy',profilePlaceHolder.png)";
 
 //Execute generated query
 if($BrunoCONN->query($ProfileInsert) === TRUE){
