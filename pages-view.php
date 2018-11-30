@@ -2,7 +2,7 @@
 session_start();
 require_once "bruno-config.php";
 require_once "get-profileid.php";
-$_SESSION['APgID'] ="";
+
 ?>
 <!DOCTYPE html>
 <html>

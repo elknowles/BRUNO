@@ -1,18 +1,19 @@
 <?php
 session_start();
 ?>
-
+<html>
+<body>
 <?php
 
 require_once "bruno-config.php";
-//<html>
-//<body>
+
 $ImageDir ="Images/Pages/";
 
 $actPgId = $_SESSION['APgID'];
-$PageName = $_POST['Name'];
-$PageDesc = $_POST['Description'];
-$PageCat = $_POST['Category'];
+//echo ":". $actPgId;
+$PageName = $_POST['pageName'];
+$PageDesc = $_POST['description'];
+$PageCat = $_POST['category'];
 $PageImg = basename($_FILES["file"["name"]]);
 
 $TargetFilePath = $ImageDir. $PageImg;
@@ -25,29 +26,17 @@ $TargetFilePath = $ImageDir. $PageImg;
 // }
 
 
-$UpdatePgSQL = "UPDATE Page SET Name =?, Description = ?, Category =?, Image =? WHERE PageID= ?";
+$UpdatePgSQL = "UPDATE Page SET Name ='$PageName', Description = '$PageDesc', Category ='$PageCat', Image ='$PageImg' WHERE PageID='$actPgId'";
 //prepare query statement
-if($UpdatePage = $BrunoCONN->prepare($UpdatePgSQL)){
-
-  $UpdatePage->bind_param("sssss",$ParamPgName,$ParamPgDesc,$ParamPgCat,$ParamPgImg,$ParamPgID);
-  //Designate variable for pageid binding
-  $ParamPgID = $actPgId;
-  $ParamPgDes =$PageDesc;
-  $ParamPgCat = $PageCat;
-  $ParamPgName = $PageName;
-  $ParamPgImg = $PageImg;
-  if($UpdatePage->execute()){
-    //execute Query
-    header("Location: http://localhost/BRUNO/pageHome.php");
+if($BrunoCONN->query($UpdatePgSQL) === TRUE){
+  echo "execution completed";
+   header("Location: http://localhost/BRUNO/pageHome.php");
     $BrunoCONN->close();
   }
   else{
     $_SESSION['Error'] = "Query failed to execute";
+    //  header("Location: http://localhost/BRUNO/error.php");
     $BrunoCONN->close();
-  }
-}
-else{
-  $_SESSION['Error'] = "Error preparing";
 }
 
 ?>
