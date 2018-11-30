@@ -26,7 +26,7 @@ function generateMsgID($mode) {
 }
 $MessageID = generateMsgID(0);
 $CreationDate = date('Y-m-d H:i:s');
-$Content = $_POST['TContent'];
+$Content = $BrunoCONN->real_escape_string($_POST['TContent']);
 $RecipUsername = $_SESSION['RecipUsr'];
 $RecipientIDSQL = "SELECT ProfileID FROM Profile WHERE Username =?";
 if($GetUserInfo = $BrunoCONN->prepare($RecipientIDSQL)){

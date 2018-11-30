@@ -28,9 +28,9 @@ function generatePaID($mode) {
   //Storing data from the form into variables
   $PageID = generatePaID(0);
   $UsrName = $_SESSION['Username'];
-  $Name = $_POST['pageName'];
-  $Description = $_POST['description'];
-  $Category = $_POST['category'];
+  $Name = $BrunoCONN->real_escape_string($_POST['pageName']);
+  $Description = $BrunoCONN->real_escape_string($_POST['description']);
+  $Category = $BrunoCONN->real_escape_string($_POST['category']);
 
   /*if(isset($_POST["submit"])){
     $check =getimagesize($_FILES["image"]["tmp_name"]);

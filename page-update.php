@@ -11,9 +11,9 @@ $ImageDir ="Images/Pages/";
 
 $actPgId = $_SESSION['APgID'];
 //echo ":". $actPgId;
-$PageName = $_POST['pageName'];
-$PageDesc = $_POST['description'];
-$PageCat = $_POST['category'];
+$PageName = $BrunoCONN->real_escape_string($_POST['pageName']);
+$PageDesc = $BrunoCONN->real_escape_string($_POST['description']);
+$PageCat = $BrunoCONN->real_escape_string($_POST['category']);
 $PageImg = basename($_FILES["file"]["name"]);
 
 $TargetFilePath = $ImageDir. $PageImg;

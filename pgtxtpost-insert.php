@@ -24,7 +24,7 @@ function generatePoID($mode) {
 $PgID = $_SESSION['APgID'];
 
 
-$TContent = $_POST['TContent'];
+$Content = $BrunoCONN->real_escape_string($_POST['TContent']);
 $PostID = generatePoID(0);
 $CreationDate = date('Y-m-d H:i:s');
 

@@ -24,6 +24,7 @@ if($Mymsgs = $BrunoCONN->prepare($UsrMessagesSQL)){
           echo $MSGID. "<br>";
           echo "-----STOP-----<br><br>";
       }
+      echo '<p> <a href="profileHome.php" style="color:dodgerblue" >Go home</a></p>';
     }
     else{
       echo "No Messages :(";

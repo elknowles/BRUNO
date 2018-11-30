@@ -29,13 +29,13 @@ function generatePrID($mode) {
 
 //Storing data from the form into variables
 $ProfileID = generatePrID(0);
-$Fname = $_POST["firstName"];
-$Mname = $_POST["middleName"];
-$Lname = $_POST["lastName"];
-$UsrName =$_POST["username"];
-$Pass = $_POST["password"];
-$Email = $_POST["email"];
-$MobileNum = $_POST["mobileNum"];
+$Fname = $BrunoCONN->real_escape_string($_POST["firstName"]);
+$Mname = $BrunoCONN->real_escape_string($_POST["middleName"]);
+$Lname = $BrunoCONN->real_escape_string($_POST["lastName"]);
+$UsrName = $BrunoCONN->real_escape_string($_POST["username"]);
+$Pass = $BrunoCONN->real_escape_string($_POST["password"]);
+$Email = $BrunoCONN->real_escape_string($_POST["email"]);
+$MobileNum = $BrunoCONN->real_escape_string($_POST["mobileNum"]);
 $CreationDate = date('Y-m-d H:i:s');
 $Bdate =  $_POST["birthdate"];
 $Privacy = $_POST["privacy"];
