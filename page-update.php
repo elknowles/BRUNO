@@ -18,12 +18,13 @@ $PageImg = basename($_FILES["file"]["name"]);
 
 $TargetFilePath = $ImageDir. $PageImg;
 
-// if(move_uploaded_file($_FILES["file"]["tmp_name"],$TargetFilePath)){
-//   //we good
-// }
-// else{
-//   $_SESSION['Error'] = "File upload failed";
-// }
+if(move_uploaded_file($_FILES["file"]["tmp_name"],$TargetFilePath)){
+   //we good
+ }
+ else{
+   $_SESSION['Error'] = "File upload failed";
+    header("Location: http://localhost/BRUNO/error.php");
+ }
 
 
 $UpdatePgSQL = "UPDATE Page SET Name ='$PageName', Description = '$PageDesc', Category ='$PageCat', Image ='$PageImg' WHERE PageID='$actPgId'";
@@ -35,7 +36,7 @@ if($BrunoCONN->query($UpdatePgSQL) === TRUE){
   }
   else{
     $_SESSION['Error'] = "Query failed to execute";
-    //  header("Location: http://localhost/BRUNO/error.php");
+     header("Location: http://localhost/BRUNO/error.php");
     $BrunoCONN->close();
 }
 
